@@ -1,4 +1,5 @@
-const forceDatabaseRefresh = false;
+const forceDatabaseRefresh = true;
+import seedAll from './seeds/index.js';
 import dotenv from 'dotenv';
 dotenv.config();
 import express from 'express';
@@ -10,8 +11,17 @@ const PORT = process.env.PORT || 3001;
 app.use(express.static('../client/dist'));
 app.use(express.json());
 app.use(routes);
-sequelize.sync({ force: forceDatabaseRefresh }).then(() => {
+sequelize.sync({ force: forceDatabaseRefresh }).then(async () => {
     app.listen(PORT, () => {
         console.log(`Server is listening on port ${PORT}`);
     });
+    if (forceDatabaseRefresh) {
+        try {
+            await seedAll();
+            console.log('Database seeding completed successfully.');
+        }
+        catch (error) {
+            console.error('Error during database seeding:', error);
+        }
+    }
 });
