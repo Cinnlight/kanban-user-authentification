@@ -29,6 +29,9 @@ This application is a **kanban board** built with the **PERN stack (PostgreSQL, 
 
 The app features **secure user authentication** using **JSON Web Tokens (JWT)**. Each user's task data is stored in a **PostgreSQL database**, with **Sequelize** managing interactions between the app and the database.
 
+## Deployed application
+- [Krazy Kanban](https://kanban-user-authentication.onrender.com/)
+
 ![Screenshot 2024-12-02 210453](https://github.com/user-attachments/assets/900157ea-4850-4599-b9e7-f969ee3aafdc)
 
 ---
